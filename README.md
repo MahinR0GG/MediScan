@@ -8,56 +8,51 @@ OCR, or Optical Character Recognition, is basically a smart digital eye. Its job
 
 The reason modern OCR works so well is Machine Learning (ML). ML uses algorithms (like deep learning networks) that are trained on massive libraries of text to recognize characters instantly. Even better, it uses language models to understand context. So if a character could look like an 'L' or a '1', the AI checks the surrounding words to figure out which one makes sense. This means OCR systems are constantly learning and getting better, especially with tricky handwriting or domain-specific lingo.
 
+This project leverages OCR to transform healthcare documents into clean, machine-readable data.
+
 
 ## <a name="a2">2. Introduction to Project</a>
 
-> Whenever we go to hospital, we always fill up some kind of forms and our medical history is created using those forms, prescriptions, test reports. Sometimes, this medical history is used for other purposes like claiming health insurance etc
+Whenever a patient visits a hospital, multiple documents such as medical records, prescriptions, and reports are generated. These records are essential for maintaining medical history, processing insurance claims, and ensuring continuity of care.
 
-> Health Insurance company might receive thousands of such documents from multiple sources and creating a record of useful information from customers medical history is a very cumbersome task and requires huge manpower. And hence this kind of tasks can be sped up using OCR technology.
+However, manually processing thousands of such documents is time-consuming, error-prone, and labor-intensive. MediScan automates this process using OCR technology to extract key information efficiently.
 
-For this project we have two types of Medical Documents.
+Supported Document Types(pdf):
 
 1. Patient Medical Record
+
 2. Prescription
 
-We are going to extract some important fields from these documents.
-![4.jpg](4.jpg)
+The system extracts structured fields like patient details, contact information, medications, dosage instructions, and more.
 
-### Why this project?
+## <a name="a3">3. Project Execution Workflow</a>
 
-Though I have been learning Data Science, then why am I doing this project? Mainly there are 3 reasons. 01. OCR is a subset of Computer Vision. OCR can be used in an NLP project like summarizing text using LLM. 02. This project involves very fundamental concepts of Python programming like OOP and Modular programming which are industry best practices. 03. Also this project involves creation of a backend server using FastAPI, which is known for its performance and many world-renowned companies such as Uber, Netflix and Microsoft use FastAPI to build their applications.
-
-## <a name="a3">3. Project Execution Steps</a>
-
-- **Step 1:** Convert pdf to image using `pdf2image` library
-- **Step 2:** Preprocess the image (Apply `adaptive thresholding and binarization using OpenCV2`)
-- **Step 3:** Extracting text from image by passing it through `tesseract OCR engine`
-- **Step 4:** Finding useful information from text using `RegEx` and returning in JSON format
-- **Step 5:** Creating a `FastAPI backend server` which serves data extraction requests by accepting a pdf_file, file_format and returning a JSON object.
-- **Step 6:** To create a Demo of `frontend UI using Streamlit` and connect it with our FastAPI server using Python Requests module.
-  ![Project Execution Steps](8.jpg)
-
+**Step 1**: Convert PDF to image using pdf2image
+**Step 2**: Preprocess image using OpenCV (adaptive thresholding and binarization)
+**Step 3**: Extract text from the image using Tesseract OCR
+**Step 4**: Parse and filter useful information using Regular Expressions (RegEx) and return as JSON
+**Step 5**: Serve the results through a FastAPI backend server that accepts PDF uploads and returns structured JSON data
+**Step 6**: Build a Streamlit frontend to interact with the backend, visualize extracted results, and optionally save them to the database
 
 ## <a name="a5">5. What did I learn through this project?</a>
 
-- How to use OCR for real world projects and key image processing concepts like thresholding using `OpenCV2`.
-- Polished up my Python coding skills by using `OOP, code refactoring and modular programming`.
-- Setting up of a backend server using `FastAPI` framework.
-- Unit testing using `Pytest`.
-- How to use `Postman` for API testing.
-- I could connect Streamlit frontend with FastAPI backend server using `Python requests` module.
+-Implemented OCR-based document processing with Tesseract and OpenCV
+-Enhanced Python coding practices with Object-Oriented Programming and modular design
+-Built and deployed a FastAPI backend server
+-Performed unit testing using pytest
+-Learned API testing using Postman
+-Connected a Streamlit frontend to a FastAPI backend using the requests library
 
 ## <a name="a6">6. Challenges faced during this project</a>
 
-- In adapative thresholding, it requires lot of trial and error to reach optimum values of block size and constant.
-- Pytest is not properly integrated with VSCode.
-- Also I faced path related errors during unit testing even in PyCharm.
-- When creating streamlit app, there are very few practical instructions available on internet for connecting it with a backend server and sending files across.
+-Fine-tuning parameters for adaptive thresholding took multiple trial-and-error iterations
+-Integrating Streamlit with FastAPI (especially for file uploads) had limited online resources
+-Managing multiple Python environments and package dependencies
 
 ## <a name="a7">7. Directory Structure of Project</a>
 
 ```
-medical-data-extraction
+Medi-Scan
 │   .gitignore
 │   README.md
 │   requirements.txt
@@ -65,7 +60,6 @@ medical-data-extraction
 ├───backend
 │   │
 │   ├───resources
-│   │   │
 │   │   ├───patient_details
 │   │   │       pd_1.pdf
 │   │   │       pd_2.pdf
@@ -76,11 +70,12 @@ medical-data-extraction
 │   │
 │   ├───src
 │   │       extractor.py
-│   │       main.py              //Fastapi Backend Server
+│   │       main.py              # FastAPI backend server
 │   │       parser_generic.py
 │   │       parser_patient_details.py
 │   │       parser_prescription.py
 │   │       utils.py
+│   │       db_utils.py
 │   │
 │   ├───mysql_scripts
 │   │       queries.sql
@@ -88,10 +83,10 @@ medical-data-extraction
 │   ├───tests
 │   │       test_prescription_parser.py
 │   │
-│   └───uploads
+│   └───uploads                  # Temporary folder for PDF uploads
 │
 ├───frontend
-│       app.py              //Streamlit app
+│       app.py                   # Streamlit UI
 │
 ├───Notebooks
 │       01_prescription_parser.ipynb
@@ -99,6 +94,6 @@ medical-data-extraction
 │       03_RegEx.ipynb
 │
 └───reference
-        tesseract_papar_by_google.pdf
-```
+        tesseract_paper_by_google.pdf
+
 
