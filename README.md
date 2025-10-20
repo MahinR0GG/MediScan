@@ -52,48 +52,37 @@ The system extracts structured fields like patient details, contact information,
 ## <a name="a7">7. Directory Structure of Project</a>
 
 ```
-Medi-Scan
-│   .gitignore
-│   README.md
-│   requirements.txt
+Medi-Scan/
 │
-├───backend
-│   │
-│   ├───resources
-│   │   ├───patient_details
-│   │   │       pd_1.pdf
-│   │   │       pd_2.pdf
-│   │   │
-│   │   └───prescription
-│   │           pre_1.pdf
-│   │           pre_2.pdf
-│   │
-│   ├───src
-│   │       extractor.py
-│   │       main.py              # FastAPI backend server
-│   │       parser_generic.py
-│   │       parser_patient_details.py
-│   │       parser_prescription.py
-│   │       utils.py
-│   │       db_utils.py
-│   │
-│   ├───mysql_scripts
-│   │       queries.sql
-│   │
-│   ├───tests
-│   │       test_prescription_parser.py
-│   │
-│   └───uploads                  # Temporary folder for PDF uploads
+├── backend/
+│   ├── backend\uploads/              # Stores uploaded medical documents
+│   ├── mysql_scripts/
+│   │   └── queries.sql               # SQL queries for database setup
+│   ├── resources/                    # Sample PDFs for testing
+│   │   ├── patient_details/
+│   │   │   ├── pd_1.pdf
+│   │   │   └── pd_2.pdf
+│   │   └── prescription/
+│   │       ├── pre_1.pdf
+│   │       └── pre_2.pdf
+│   ├── src/
+│   │   ├── db_utils.py               # Database connection and queries
+│   │   ├── extractor.py              # Core logic for PDF text extraction
+│   │   ├── parser_generic.py         # Generic parsing logic
+│   │   ├── parser_patient_details.py # Patient details extraction logic
+│   │   ├── parser_prescription.py    # Prescription data extraction logic
+│   │   ├── utils.py                  # Helper utilities
+│   │   └── main.py                   # Main backend API server
+│   └── main.py                       # Entry point for backend
 │
-├───frontend
-│       app.py                   # Streamlit UI
+├── frontend/
+│   ├── app.py                        # Streamlit frontend
+│   ├── Misc/                         # Additional files or assets
+│   └── __init__.py
 │
-├───Notebooks
-│       01_prescription_parser.ipynb
-│       02_patient_details_parser.ipynb
-│       03_RegEx.ipynb
-│
-└───reference
-        tesseract_paper_by_google.pdf
+├── requirements.txt                  # Python dependencies
+├── README.md                         # Documentation
+└── .gitignore
+
 
 
