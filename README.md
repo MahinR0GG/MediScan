@@ -27,27 +27,27 @@ The system extracts structured fields like patient details, contact information,
 
 ## <a name="a3">3. Project Execution Workflow</a>
 
-**Step 1**: Convert PDF to image using pdf2image
-**Step 2**: Preprocess image using OpenCV (adaptive thresholding and binarization)
-**Step 3**: Extract text from the image using Tesseract OCR
-**Step 4**: Parse and filter useful information using Regular Expressions (RegEx) and return as JSON
-**Step 5**: Serve the results through a FastAPI backend server that accepts PDF uploads and returns structured JSON data
-**Step 6**: Build a Streamlit frontend to interact with the backend, visualize extracted results, and optionally save them to the database
+- **Step 1**: Convert PDF to image using pdf2image
+- **Step 2**: Preprocess image using OpenCV (adaptive thresholding and binarization)
+- **Step 3**: Extract text from the image using Tesseract OCR
+- **Step 4**: Parse and filter useful information using Regular Expressions (RegEx) and return as JSON
+- **Step 5**: Serve the results through a FastAPI backend server that accepts PDF uploads and returns structured JSON data
+- **Step 6**: Build a Streamlit frontend to interact with the backend, visualize extracted results, and optionally save them to the database
 
 ## <a name="a5">5. What did I learn through this project?</a>
 
--Implemented OCR-based document processing with Tesseract and OpenCV
--Enhanced Python coding practices with Object-Oriented Programming and modular design
--Built and deployed a FastAPI backend server
--Performed unit testing using pytest
--Learned API testing using Postman
--Connected a Streamlit frontend to a FastAPI backend using the requests library
+- Implemented OCR-based document processing with Tesseract and OpenCV
+- Enhanced Python coding practices with Object-Oriented Programming and modular design
+- Built and deployed a FastAPI backend server
+- Performed unit testing using pytest
+- Learned API testing using Postman
+- Connected a Streamlit frontend to a FastAPI backend using the requests library
 
 ## <a name="a6">6. Challenges faced during this project</a>
 
--Fine-tuning parameters for adaptive thresholding took multiple trial-and-error iterations
--Integrating Streamlit with FastAPI (especially for file uploads) had limited online resources
--Managing multiple Python environments and package dependencies
+- Fine-tuning parameters for adaptive thresholding took multiple trial-and-error iterations
+- Integrating Streamlit with FastAPI (especially for file uploads) had limited online resources
+- Managing multiple Python environments and package dependencies
 
 ## <a name="a7">7. Directory Structure of Project</a>
 
