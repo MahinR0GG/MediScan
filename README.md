@@ -1,53 +1,13 @@
 # Medical Data Extraction
 
-An OCR project to extract information about Patient and Prescription details from PDF Documents.
-Also this project involved creation of a backend server which will process data extraction requests.
-
-## Demo
-
-https://github.com/abhijeetk597/medical-data-extraction/assets/138308825/3d5d90e8-2858-4831-b1d5-97a3874f256c
-
-## [Click here to see project presentation](https://youtu.be/xh0livz2tSY)
-
-## Overview
-
-1. [What is OCR?](#a1)
-2. [Introduction to Project](#a2)
-3. [Project Execution Steps](#a3)
-4. [Code Walkthrough](#a4)
-5. [What did I learn through this project?](#a5)
-6. [Challenges Faced](#a6)
-7. [Directory Structure](#a7)
-8. [If you are cloning my repo?](#a8)
-9. [🚀 Update 1: Store data into MySQL DB after verification in UI](#a9)
+Mediscan is an Optical Character Recognition (OCR)-driven solution engineered for the automated and accurate extraction of patient and prescription metadata from digital PDF documents.
 
 ## <a name="a1">1. What is OCR?</a>
 
-OCR stands for Optical Character Recognition. It's a technology that enables the conversion of different types of documents, such as scanned paper documents, PDF files, or images captured by a digital camera, into editable and searchable data. Essentially, OCR software identifies text within images or scanned documents and converts it into machine-readable text.
+OCR, or Optical Character Recognition, is basically a smart digital eye. Its job is simple: to take pictures of text—whether that's a scanned paper, a tricky PDF, or a photo you snapped—and turn it into text that you can actually edit, search for, and copy-paste. It changes a static picture of words into live, machine-usable data.
 
-Machine learning and AI play significant roles in OCR technology. Machine learning (ML) powers OCR to turn images into text. ML algorithms like convolutional neural networks (CNNs) are trained on massive datasets to recognize characters. ML also helps extract key features from images and utilizes language models to understand context and improve accuracy, especially for ambiguous characters. OCR systems continuously learn and adapt to specific domains and languages through ML, ensuring ever-better performance.
+The reason modern OCR works so well is Machine Learning (ML). ML uses algorithms (like deep learning networks) that are trained on massive libraries of text to recognize characters instantly. Even better, it uses language models to understand context. So if a character could look like an 'L' or a '1', the AI checks the surrounding words to figure out which one makes sense. This means OCR systems are constantly learning and getting better, especially with tricky handwriting or domain-specific lingo.
 
-Here are some common applications and domains where OCR is used:
-
-1. **Document Digitization**: OCR is extensively used to convert scanned documents, PDFs, and images into editable and searchable text. This is useful in offices, libraries, and archives for digitizing large volumes of documents for easier storage, retrieval, and sharing.
-
-2. **Data Entry Automation**: OCR automates data entry processes by extracting text from documents such as invoices, receipts, and forms. This saves time and reduces errors associated with manual data entry tasks.
-
-3. **Banking and Finance**: OCR is employed in banking for reading checks, processing forms, and extracting information from financial documents. It facilitates faster processing of transactions and improves accuracy in tasks like check reading and automated form filling.
-
-4. **Healthcare**: In healthcare, OCR assists in digitizing medical records, prescriptions, and patient forms. It enables quick access to patient information, enhances data accuracy, and streamlines administrative tasks in hospitals and clinics.
-
-5. **Retail and E-commerce**: OCR is used in retail for tasks like inventory management, barcode scanning, and automatic price recognition. In e-commerce, it helps extract product information from images and catalogs, improving searchability and customer experience.
-
-6. **Automated License Plate Recognition (ALPR)**: OCR technology is utilized in ALPR systems for reading license plates on vehicles. It's employed in various applications such as traffic management, toll collection, parking enforcement, and security surveillance.
-
-7. **Translation Services**: OCR assists in language translation by converting printed text from one language into machine-readable text, which can then be processed by translation software. This enables the automatic translation of documents and websites.
-
-8. **Accessibility**: OCR helps individuals with visual impairments by converting printed text into accessible formats such as audio or Braille. It allows them to access information from printed materials like books, documents, and signs.
-
-9. **Legal and Compliance**: In legal and compliance domains, OCR is used for searching and analyzing large volumes of legal documents, contracts, and regulatory filings. It facilitates faster retrieval of relevant information and aids in compliance monitoring.
-
-10. **Education**: OCR is employed in educational institutions for tasks like grading exams, digitizing textbooks, and converting handwritten notes into editable text. It assists in creating accessible learning materials and automating administrative processes.
 
 ## <a name="a2">2. Introduction to Project</a>
 
@@ -77,14 +37,6 @@ Though I have been learning Data Science, then why am I doing this project? Main
 - **Step 6:** To create a Demo of `frontend UI using Streamlit` and connect it with our FastAPI server using Python Requests module.
   ![Project Execution Steps](8.jpg)
 
-## <a name="a4">4. Code Walkthrough</a>
-
-Explore notebooks and source code of this project.
-
-- Notebook 1: [Prescription_parser](https://github.com/abhijeetk597/medical-data-extraction/blob/main/Notebooks/01_prescription_parser.ipynb)
-- Notebook 2: [Patient_details_parser](https://github.com/abhijeetk597/medical-data-extraction/blob/main/Notebooks/02_patient_details_parser.ipynb)
-- Backend: [Source code directory](https://github.com/abhijeetk597/medical-data-extraction/tree/main/backend/src)
-- Frontend: [Streamlit app](https://github.com/abhijeetk597/medical-data-extraction/blob/main/frontend/app.py)
 
 ## <a name="a5">5. What did I learn through this project?</a>
 
@@ -150,23 +102,3 @@ medical-data-extraction
         tesseract_papar_by_google.pdf
 ```
 
-## <a name="a8">8. If you are cloning this repository?</a>
-
-- Install all dependancies from `requirements.txt`
-- For `pdf2image` you need to [download `poppler`](https://github.com/belval/pdf2image?tab=readme-ov-file#how-to-install)
-- Install Tesseract OCR Engine in your PC
-  - [Tesseract installation instrution : Github](https://github.com/tesseract-ocr/tesseract#installing-tesseract)
-  - [Tesseract windows specific instructions: Github](https://github.com/UB-Mannheim/tesseract/wiki)
-- Set required PATHs as per your environment
-  > [Demo video to clone and run this project in your machine.](https://youtu.be/UWmOePHzePM)
-- Update: Now you will have to link you db for storing data. Python code updated accordingly, and script for creation of db table and SPs is uploaded in the repo.
-
-## <a name="a9">9. 🚀 Update 1: Store data into MySQL DB after verification in UI</a>
-
-- In the Streamlit UI I have kept a submit button but there was no any event listener for the button. Now I have integrated DB functionality and you can store the data on UI back into MySQL Database using Stored Procedures.
-- In the directory `mysql_scripts`, you can find queries used for creation of table and stored procedures. In the `backend\scr` directory a new module `db_utils` added, where you can find code for how you can connect your database with python. In the `main.py` 2 new POST methods created for updating the db tables.
-
-> In the UI, once you receive OCR output, you can modify it before saving to db.
-
-![Patients Table](13.png)
-![Prescriptions Table](14.png)
