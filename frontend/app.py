@@ -107,3 +107,5 @@ if file:
                     st.error("Error saving data to database.")
             except Exception as e:
                 st.error(f"Error sending data: {e}")
+
+#streamlit run app.py
